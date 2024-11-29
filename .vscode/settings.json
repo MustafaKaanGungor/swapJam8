@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Swap Jam 8.sln"
+    "dotnet.defaultSolution": "swapJam8.sln"
 }
