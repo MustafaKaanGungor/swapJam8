@@ -77,7 +77,7 @@ public class noelFatherController : MonoBehaviour
 
         Vector2 engineForceVector = transform.up * ivmeInput * ivmeFactor;
 
-        rb.AddForce(engineForceVector, ForceMode2D.Force);
+        rb.AddForce(engineForceVector * Time.deltaTime, ForceMode2D.Force);
     }
 
     void ApplySteering()
