@@ -16,6 +16,9 @@ public class noelFatherController : MonoBehaviour
     //float velocityVsUp = 0;
 
 
+    [SerializeField] private int giftCounter;
+
+
 
     Rigidbody2D rb;
 
@@ -105,5 +108,12 @@ public class noelFatherController : MonoBehaviour
         steeringInput = inputVector.x;
         ivmeInput = inputVector.y;
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.CompareTag("Gift")) {
+            Destroy(other.gameObject);
+            giftCounter++;
+        }
     }
 }
