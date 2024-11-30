@@ -113,7 +113,7 @@ public class noelFatherController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("Gift")) {
             Destroy(other.gameObject);
-            giftCounter++;
+            giftCounter--;
         }
     }
 }
