@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Diagnostics;
 using TMPro;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 //Ana menü Allaha emanet çalışıyor ellemeyin sonra bir ayar daha çekecem
 //Brightness Çalışmıyor
 
@@ -12,7 +14,8 @@ public class MainMenuScript : MonoBehaviour
 {
     public string gameLoad;
     [Header("Brightness Settings")]
-    [SerializeField] private TextMeshProUGUI brightnessTextValue = null;
+    [SerializeField] private Volume brightnessVolume;
+    private ColorAdjustments brightnessvalue;
     [SerializeField] private Slider brightnessSlider = null;
     [Header("Volume Settings")]
     [SerializeField] private TextMeshProUGUI volumeTextValue = null;
@@ -41,8 +44,8 @@ public class MainMenuScript : MonoBehaviour
     //Brightness Çalışmıyor.
     public void Brightness(float brightness)
     {
-        Screen.brightness = Mathf.Clamp01(brightness);
-        brightnessTextValue.text = Mathf.RoundToInt(brightness).ToString();
+        brightnessVolume.profile.TryGet(out brightnessvalue);
+        brightnessvalue.postExposure.value = brightness;
     }
 
     
