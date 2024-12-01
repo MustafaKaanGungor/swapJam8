@@ -9,6 +9,7 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 //Ana menü Allaha emanet çalışıyor ellemeyin sonra bir ayar daha çekecem
 //Brightness Çalışmıyor
+//abdül ben scene manager1 adlı bir script oluşturdum . orda oyun scene nine geçme ve exit fonksiyonları oluşturdum onları kullan , hepsi tek bir yerde olsun
 
 public class MainMenuScript : MonoBehaviour
 {

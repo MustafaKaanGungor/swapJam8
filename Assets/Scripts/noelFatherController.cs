@@ -21,16 +21,19 @@ public class noelFatherController : MonoBehaviour
 
 
     Rigidbody2D rb;
-
+    GameManager gameManager;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+
     }
 
 
     void Start()
     {
+        gameManager = FindAnyObjectByType<GameManager>();
 
+        
     }
 
     // Update is called once per frame
@@ -112,6 +115,7 @@ public class noelFatherController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.CompareTag("Goblin")) {
+            gameManager.goblinCount++;
             Destroy(other.gameObject);
             giftCounter--;
         }
@@ -119,6 +123,7 @@ public class noelFatherController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("Gift")) {
+            gameManager.giftCount++;
             Destroy(other.gameObject);
             giftCounter--;
         }
