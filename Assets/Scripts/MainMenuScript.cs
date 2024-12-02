@@ -42,13 +42,21 @@ public class MainMenuScript : MonoBehaviour
     }
 
 
-    //Brightness Çalışmıyor.
+    
     public void Brightness(float brightness)
     {
         brightnessVolume.profile.TryGet(out brightnessvalue);
         brightnessvalue.postExposure.value = brightness;
     }
 
+    public void DontDestroyAudioManager(GameObject AudioManager)
+    {
+        DontDestroyOnLoad(AudioManager);
+    }
+
+    
+
+   
     
 
 }
