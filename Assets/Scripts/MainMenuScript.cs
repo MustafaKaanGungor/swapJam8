@@ -31,8 +31,8 @@ public class MainMenuScript : MonoBehaviour
 
     
 
-    void LateUpdate()
-    {
+    void FixedUpdate()
+    {   
         StartCoroutine("BackgroundAnimation");
     }
     public void LoadGame()
