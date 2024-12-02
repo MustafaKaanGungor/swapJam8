@@ -7,6 +7,7 @@ using System.Diagnostics;
 using TMPro;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using NUnit.Framework.Constraints;
 //Ana menü Allaha emanet çalışıyor ellemeyin sonra bir ayar daha çekecem
 //Brightness Çalışmıyor
 //abdül ben scene manager1 adlı bir script oluşturdum . orda oyun scene nine geçme ve exit fonksiyonları oluşturdum onları kullan , hepsi tek bir yerde olsun
@@ -22,9 +23,18 @@ public class MainMenuScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI volumeTextValue = null;
     [SerializeField] private Slider volumeSlider = null;
 
+    [SerializeField] private Image BackgroundImage;
+    [SerializeField] private Sprite[] images;
+    private int spriteIndex = 0;
+    [SerializeField] float timeToWait;
     
 
+    
 
+    void LateUpdate()
+    {
+        StartCoroutine("BackgroundAnimation");
+    }
     public void LoadGame()
     {
         SceneManager.LoadScene(gameLoad);
@@ -37,7 +47,7 @@ public class MainMenuScript : MonoBehaviour
 
     public void Volume(float volume)
     {
-        AudioListener.volume  = volume;
+        AudioListener.volume  = volume / 50;
         volumeTextValue.text = Mathf.RoundToInt(volume).ToString();
     }
 
@@ -54,7 +64,21 @@ public class MainMenuScript : MonoBehaviour
         DontDestroyOnLoad(AudioManager);
     }
 
+    IEnumerator BackgroundAnimation()
+    {
+        yield return new WaitForSecondsRealtime(timeToWait);
+        if(spriteIndex >= images.Length)
+        {
+            spriteIndex = 0;
+        }
+
+        BackgroundImage.sprite = images[spriteIndex];
+        spriteIndex++;
+    }
+
+   
     
+   
 
    
     
