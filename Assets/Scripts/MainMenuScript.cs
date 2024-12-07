@@ -27,6 +27,7 @@ public class MainMenuScript : MonoBehaviour
     [SerializeField] private Sprite[] images;
     private int spriteIndex = 0;
     [SerializeField] float timeToWait;
+    [SerializeField] private VolumeProfile profile;
     
 
     
@@ -34,6 +35,12 @@ public class MainMenuScript : MonoBehaviour
     void FixedUpdate()
     {   
         StartCoroutine("BackgroundAnimation");
+         
+    }
+    void Start()
+    {
+        profile.TryGet(out brightnessvalue);
+        brightnessSlider.value = brightnessvalue.postExposure.value;
     }
     public void LoadGame()
     {
@@ -55,8 +62,9 @@ public class MainMenuScript : MonoBehaviour
     
     public void Brightness(float brightness)
     {
-        brightnessVolume.profile.TryGet(out brightnessvalue);
+        profile.TryGet(out brightnessvalue);
         brightnessvalue.postExposure.value = brightness;
+        PlayerPrefs.SetFloat("Brightness",brightness);
     }
 
     public void DontDestroyAudioManager(GameObject AudioManager)
